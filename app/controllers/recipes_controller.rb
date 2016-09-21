@@ -6,6 +6,11 @@ before_action :authenticate_user!, except: [:index, :show]
 		@recipe = Recipe.all.order("created_at DESC")
 	end
 
+	def my
+		@recipe = current_user.recipes.order("created_at DESC")
+		render :index
+	end
+
 	def show
 	end
 

@@ -1,18 +1,20 @@
 !!! 5
 %html
 %head
-	%title Recipe App
+	%title Best Recipe
 	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 	= javascript_include_tag 'application', 'data-turbolinks-track' => true
 	= csrf_meta_tags
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 
 %body
 	%nav.navbar.navbar-default
 		.container
-			.navbar-brand= link_to "Recipe Box", root_path
+			.navbar-brand= link_to "Best Recipes", root_path
 
 			- if user_signed_in?
 				%ul.nav.navbar-nav.navbar-right
+					%li= link_to "My Recipes", my_recipes_path
 					%li= link_to "New Recipe", new_recipe_path
 					%li= link_to "Sign Out", destroy_user_session_path, method: :delete
 			- else
