@@ -5,7 +5,11 @@
 		.col-md-8
 			#recipe_info
 				%h1= @recipe.title
+				%p 	
+					Category:
+					= @recipe.category.name				
 				%p.description= @recipe.description
+
 				%p
 					Submitted by
 					= @recipe.user.email

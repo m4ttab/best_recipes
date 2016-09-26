@@ -1,3 +1,9 @@
+%h3= params[:category]
+%br
+
+- if @recipe.count == 0
+	%h4 There are no recipes currently in this category
+- else
 - @recipe.each_slice(3) do |recipe|
 	.row
 		- recipe.each do |recipe|
