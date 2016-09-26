@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
 gem 'devise'
 gem 'cocoon'
 gem "paperclip"
