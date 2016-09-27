@@ -17,6 +17,11 @@ before_action :authenticate_user!, except: [:index, :show]
 	end
 
 	def show
+		if @recipe.reviews.blank?
+			@average_review = 0
+		else
+			@average_review = @recipe.reviews.average(:rating).round(2)
+		end
 	end
 
 	def new

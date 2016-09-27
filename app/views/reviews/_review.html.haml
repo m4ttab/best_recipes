@@ -1,0 +1,9 @@
+.review-rating{"data-score" => "#{review.rating}"}
+
+%p Comment by #{review.user.email}
+%p= review.comment
+
+- if user_signed_in?
+	- if current_user.id == review.user_id
+		= link_to "Edit", edit_recipe_review_path(review.recipe, review)
+		= link_to "Delete", recipe_review_path(review.recipe, review), method: :delete, data: {confirm: "Are you sure?"}

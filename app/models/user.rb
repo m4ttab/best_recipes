@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
   has_many :recipes
+  has_many :reviews
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)    
   	user = User.where(provider: auth.provider, uid: auth.uid).first    

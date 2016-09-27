@@ -1,0 +1,22 @@
+%h3 Edit Review
+
+= simple_form_for([@recipe, @review]) do |f|
+	- if @review.errors.any?
+		#errors
+			%p
+				= @review.errors.count
+				Prevented this review froms saving
+			%ul
+				- @review.errors.full_messages.each do |msg|
+					%li= msg
+	.panel-body
+		#rating-form
+			%label Rating
+		= f.input :comment, input_html: { class: 'form-control' }	
+		= f.button :submit, class: "btn btn-primary"
+
+:javascript
+	$('#rating-form').raty({
+		path: '/assets/',
+		scoreName: 'review[rating]'
+	});

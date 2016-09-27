@@ -5,14 +5,19 @@
 		.col-md-8
 			#recipe_info
 				%h1= @recipe.title
+				%p
+					Submitted by
+					= @recipe.user.email				
 				%p 	
 					Category:
 					= @recipe.category.name				
+				%h4 Average Rating
+				.average-review-rating{"data-score" => @average_review}
+				%span Based on #{ @recipe.reviews.count} reviews
+				
 				%p.description= @recipe.description
 
-				%p
-					Submitted by
-					= @recipe.user.email
+
 
 	.row
 		.col-md-6
@@ -30,9 +35,32 @@
 						%li= direction.step
 
 	.row
-		.col-md-12
-			= link_to "Back", root_path, class: "btn btn-default"
-				- if user_signed_in?
-				- if current_user.id == @recipe.user_id
-					= link_to "Edit", edit_recipe_path, class: "btn btn-default"
-					= link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default"
+		.col-md-6
+			#reviews
+				%h3 Reviews
+				= render @recipe.reviews
+					
+				= link_to "Back", root_path, class: "btn btn-default"
+					- if user_signed_in?
+					= link_to "Add Review", new_recipe_review_path(@recipe), class: "btn btn-default"
+					- if current_user.id == @recipe.user_id
+						= link_to "Edit", edit_recipe_path, class: "btn btn-default"
+						= link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default"
+
+:javascript
+	$('.review-rating').raty({
+	  	readOnly: true,
+	  	score: function() {
+	  		return $(this).attr('data-score');
+	  	},
+	  	path: '/assets/'
+	  });
+
+:javascript
+	$('.average-review-rating').raty({
+	  	readOnly: true,
+	  	path: '/assets/',
+	  	score: function() {
+	  		return $(this).attr('data-score')
+	  	}
+	  });
