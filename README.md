@@ -1,24 +1,15 @@
-# README
+Best Recipes is an application where you can add your recipes, comment and rate other recipes.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Gems I've been using:
 
-Things you may want to cover:
+- gem 'paperclip'
+- gem 'twitter-bootstrap-rails'
+- gem 'devise'
+- gem 'omniauth'
+- gem 'omniauth-facebook'
+- gem 'cocoon'
+- gem 'bootstrap-sass'
+- gem 'simple_form'
+- gem 'haml'
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
