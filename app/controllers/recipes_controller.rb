@@ -3,8 +3,10 @@ before_action :find_recipe, only: [:show, :edit, :update, :destroy]
 before_action :authenticate_user!, except: [:index, :show]
 
 	def index
+		@search = Recipe.search(params[:q])
+
 		if params[:category].blank?
-			@recipe = Recipe.all.order("created_at DESC")
+			@recipe = @search.result.order("created_at DESC")
 		else
 			@category_id = Category.find_by(name: params[:category]).id
 			@recipe = Recipe.where(:category_id => @category_id).order("created_at DESC")

@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'ransack'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'devise'
